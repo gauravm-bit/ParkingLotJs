@@ -1,15 +1,18 @@
-class parkingLot{
+ class parkingLot{
     constructor(){
         this.Lot = [];
+        this.parkingCapacity = 5;
     }
 
     doParking = (car) => {
-        if(this.Lot.includes(car))
+        if(this.checkStatusIfFull())
         {
-            return false;
+            throw "parking is full"
         }
-        this.Lot.push(car)
-        return true;
+        else{
+            this.Lot.push(car)
+            return true;
+        }   
     }
 
     doUnpark = (car) => {
@@ -19,5 +22,14 @@ class parkingLot{
         }
         return false;
     }
+
+    checkStatusIfFull = () => {
+        if(this.Lot.length == this.parkingCapacity)
+        {
+            return true;
+        }
+        return false;
+    }
+      
 }
 module.exports = new parkingLot
