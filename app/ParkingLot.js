@@ -7,12 +7,20 @@
     doParking = (car) => {
         if(this.checkStatusIfFull())
         {
-            throw "parking is full"
+            throw "Parking Lot is Full"
         }
-        else{
+        else
+        {
+            if(this.Lot.includes(car))
+            {
+                return false;
+            }
+            else
+            {
             this.Lot.push(car)
             return true;
-        }   
+            }
+     }   
     }
 
     doUnpark = (car) => {
@@ -24,7 +32,7 @@
     }
 
     checkStatusIfFull = () => {
-        if(this.Lot.length == this.parkingCapacity)
+        if(this.Lot.length >= this.parkingCapacity)
         {
             return true;
         }
