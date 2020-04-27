@@ -1,6 +1,6 @@
 const assert = require('chai').assert
 const parkingLot = require('../app/ParkingLot.js')
-const owner = require('../app/Owner')
+const owner = require('../app/Owner.js')
 
 let car = { }
 let car1,car2,car3,car4,car5 = { }
@@ -30,7 +30,7 @@ it(`dont allow unparking if already unparked`, () => {
     assert.isFalse(result)
 })
 
-//TC 3.1 if the lot is full dont allow parking and put sign board
+//TC 3.1 if the lot is not full allow parking
 it(`dont allow parking if the lot is full and put the sign board`, () => {
     try{
         parkingLot.doParking(car1)
@@ -39,16 +39,14 @@ it(`dont allow parking if the lot is full and put the sign board`, () => {
         parkingLot.doParking(car4)
         parkingLot.doParking(car5)
         
-        assert.isTrue(owner.OwnerCheckIfFull)
+        let result = owner.OwnerCheckIfFull() 
+        assert.isFalse(parkingLot.doParking(car),result)
     }
     catch(e)
     {
       return e;
     }
 })
-
-
-
 
 
 })

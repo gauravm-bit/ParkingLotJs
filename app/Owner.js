@@ -1,7 +1,5 @@
-const parkingLot = require('../app/ParkingLot.js')
-
-class Owner {
+class Ownerclass {
 
     OwnerCheckIfFull = () => parkingLot.checkStatusIfFull();
 }
-module.exports = new Owner
+module.exports = new Ownerclass
