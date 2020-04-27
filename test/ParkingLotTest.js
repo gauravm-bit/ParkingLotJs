@@ -4,7 +4,7 @@ const owner = require('../app/Owner.js')
 const security = require('../app/AirportPersonel.js')
 
 let car = { type : 'car'}
-let c1,c2,c3,c4,c5 = { type : 'car'}
+let car1,car2,car3,car4,car5 = { type : 'car'}
 describe(`Testing for Parking Lot service`, () => {
 
 //TC 1.1 let the driver park so that he can board his flight
@@ -42,16 +42,16 @@ it(`dont allow parking if the lot is full and put the sign board`, () => {
         
         let result = owner.OwnerCheckIfFull() 
         assert.notEqual(parkingLot.doParking(car),result)
-    }
-    catch(e)
-    {
-      return e;
-    }
+   }
+   catch(e)
+   {
+     return e;
+   }
 })
 
 //TC 4.1 if the lot is full redirect security staff
 it(`if lot is full redirect security staff`, () => {
-    try{
+  try{
             parkingLot.doParking(car1)
             parkingLot.doParking(car2)
             parkingLot.doParking(car3)
@@ -59,12 +59,18 @@ it(`if lot is full redirect security staff`, () => {
             parkingLot.doParking(car5)
                 
             let result = security.SecurityCheckIfFull() 
-            assert.notEqual(parkingLot.this.doParking(car),result)
-    }
-    catch(e)
-    {
-      return e;
-    }
+            assert.notEqual(parkingLot.doParking(car),result)
+   }
+   catch(e)
+   {
+     return e;
+   }
+})
+
+//TC 5.1 if the lot is not full owner takes in the sign again
+it(`if the lot is not full the owner takes in signboard again`, () => {
+    let result = owner.OwnerCheckIfFull()
+    assert.isFalse(result) 
 })
 
 })

@@ -1,3 +1,4 @@
+const parkingLot = require('../app/ParkingLot.js')
 class Ownerclass {
 
     OwnerCheckIfFull = () => parkingLot.checkStatusIfFull();
